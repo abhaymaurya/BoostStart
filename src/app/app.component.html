@@ -1,0 +1,8 @@
+<router-outlet></router-outlet>
+<div class="message" *ngIf="message">{{message}}</div>
+<div class="error" *ngIf="error">
+    {{error}}
+    <div class="cancelError">
+        <img (click)="cancelErrorMessage()" src="assets/cancel.png" />
+    </div>
+</div>

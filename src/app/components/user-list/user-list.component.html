@@ -1,0 +1,17 @@
+<app-header login=true></app-header>
+<app-breadcrumb></app-breadcrumb>
+<app-form-label title="User List"></app-form-label>
+<div *ngIf="users" class="user-list">
+    <input type="text" placeholder="search by name" name="search-box" [(ngModel)]="searchValue" (keyup)="search()">
+    <ul *ngFor="let user of users">
+        <li>
+            <div class="user-list-text">{{user.name}}</div>
+            <div class="user-list-icons">
+                <img *ngIf="user.state==='inactive'" (click)="openEdit(user)" src="assets/pencil.svg" />
+                <img *ngIf="user.state==='active'" (click)="cancelEdit(user)" src="assets/cancel.png" />
+                <img *ngIf="user.id!=loggedInUser.id" (click)="openDialog(user)" src="assets/delete.png" />
+            </div>
+        </li>
+        <app-user-edit [user]=user (notify)="onNotify($event)"></app-user-edit>
+    </ul>
+</div>

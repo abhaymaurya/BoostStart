@@ -1,0 +1,39 @@
+<app-header></app-header>
+<app-form-label [title]=title></app-form-label>
+<form *ngIf="!forgotPassword" (ngSubmit)="login()" #loginForm="ngForm">
+    <div>
+        <label for="email">Email</label>
+        <input class="field" type="text" id="email" name="email" placeholder="your email address" required [(ngModel)]="email" #_email="ngModel" email>
+        <div class="info" *ngIf="_email.invalid && (_email.dirty || _email.touched)">
+            Email is required
+        </div>
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input class="field" type="password" id="password" name="password" placeholder="your password" required [(ngModel)]="password" #_password="ngModel">
+        <div class="info" *ngIf="_password.invalid && (_password.dirty || _password.touched)">
+            Password is required
+        </div>
+    </div>
+
+    <input type="submit" value="Submit" [disabled]="!loginForm.form.valid">
+</form>
+
+<form *ngIf="forgotPassword" (ngSubmit)="sendResetPassworkLink()" #forgotPasswordForm="ngForm">
+    <div>
+        <label for="email">Email</label>
+        <input class="field" type="text" id="email" name="email" placeholder="your email address" required [(ngModel)]="email" #_email="ngModel" email>
+        <div class="info" *ngIf="_email.invalid && (_email.dirty || _email.touched)">
+            Email is required
+        </div>
+    </div>
+
+    <input type="submit" value="Submit" [disabled]="!forgotPasswordForm.form.valid">
+</form>
+
+<div *ngIf="!forgotPassword" class="question">Don't have an account? <a routerLink="/sign-up">Sign Up</a></div>
+
+<div *ngIf="!forgotPassword" class="question"><span (click)="forgotPassword=true; title='Forgot Password Form'">Forgot Password?</span></div>
+
+<div *ngIf="forgotPassword" class="question"><span (click)="forgotPassword=false; title='Login Form'">Login</span></div>

@@ -1,0 +1,8 @@
+<div class="div-breadcrumbs">
+    <div>
+        <ng-container *ngFor="let breadcrumb of breadcrumbs; let i = index">
+            <a *ngIf="i<lastLinkAt else elseBlock" [routerLink]="[ breadcrumbsLinks[i] ]" class="breadcrumb-link">{{breadcrumbsLabels[i]}}</a>
+            <ng-template #elseBlock>{{breadcrumbsLabels[i]}}</ng-template>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+<app-header></app-header>
+<app-form-label title="Sign Up Form"></app-form-label>
+<form (ngSubmit)="signUp()" #signUpForm="ngForm">
+    <div>
+        <label for="name">Name</label>
+        <input class="field" type="text" id="name" name="name" placeholder="your name" required [(ngModel)]="user.name">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input class="field" type="text" id="email" name="email" placeholder="your email address" required [(ngModel)]="user.email" #email="ngModel" email>
+        <div class="info" *ngIf="email.invalid && (email.dirty || email.touched)">
+            Email is required
+        </div>
+    </div>
+    
+    <div>
+        <label for="password">Password</label>
+        <input class="field" type="password" id="password" name="password" placeholder="your password" minlength=8 required [(ngModel)]="user.password" #password="ngModel">
+        <div class="info" *ngIf="password.invalid && (password.dirty || password.touched)">
+            Password is required and should be at least 8 character long
+        </div>
+    </div>
+
+    <div>
+        <label for="password">Confirm Password</label>
+        <input class="field" type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" minlength=8 required [(ngModel)]="confirmPassword" #_confirmPassword="ngModel">
+        <div class="info" *ngIf="(password.value!==_confirmPassword.value) && (_confirmPassword.dirty || _confirmPassword.touched)">
+            Passwords do not match
+        </div>
+    </div>
+
+    <input type="submit" value="Submit" [disabled]="!signUpForm.form.valid">
+</form>
+<div class="question">Already have an account? <a routerLink="/login">Login</a></div>

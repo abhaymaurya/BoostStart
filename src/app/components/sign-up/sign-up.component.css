@@ -1,0 +1,84 @@
+form{
+    width: 500px;
+    margin: auto;
+    border: 1px solid grey;
+    padding: 10px;
+    text-align: center;
+    font-size: 13px;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+label{
+    width: 45%;
+    display: inline-block;
+    text-align: right;
+}
+.field{
+    text-align: left;
+    display: inline-block;
+    height: 10px;
+    width: 45%;
+    margin: 5px 0px 5px 5px;
+    padding: 10px;
+}
+.info{
+    color: grey;
+    font-size: 13px;
+    text-align: right;
+    margin-right: 3%;
+    margin-bottom: 10px;
+}
+input[type="submit"]{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    color: white;
+    background-color: grey;
+    cursor: pointer;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+input[type="submit"]:hover{
+    color: black;
+    background-color: white;
+}
+input[type="submit"]:disabled{
+    background-color: white;
+    cursor: auto;
+    color: grey;
+}
+.question{
+    position: relative;
+    color: grey;
+    font-size: 13px;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.question a, .question span{
+    text-decoration: none;
+    color: #787878;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    form{
+        width: 95%;
+    }
+}
+@media (max-width: 400px) {
+    form{
+        font-size: 11px;
+    }
+    label{
+        width: 40%;
+    }
+    .field{
+        width: 40%;
+    }
+}

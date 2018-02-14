@@ -1,0 +1,15 @@
+<form [@userState]="user.state" (ngSubmit)="updateUser()" #userEdit="ngForm">
+    <div>
+        <label for="name">Name</label>
+        <input [(ngModel)]="user.name" class="field" type="text" id="name" name="name" placeholder="your name" required [(ngModel)]="name" #_email="ngModel">
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input [(ngModel)]="user.email" class="field" type="text" id="email" name="email" placeholder="your email address" required [(ngModel)]="email" #_email="ngModel" email>
+        <div class="info" *ngIf="_email.invalid && (_email.dirty || _email.touched)">
+            Email is required
+        </div>
+    </div>
+    <input type="submit" value="Save" [disabled]="!userEdit.form.valid">
+</form>
